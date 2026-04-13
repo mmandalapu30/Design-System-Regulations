@@ -1,0 +1,406 @@
+{
+  "domain": "ios",
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-13",
+  "description": "Design system regulations for iOS applications based on Apple Human Interface Guidelines, App Store Review Guidelines, and WCAG accessibility standards.",
+  "references": [
+    {
+      "name": "Apple Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "description": "Apple's comprehensive design guidance for all Apple platforms."
+    },
+    {
+      "name": "Apple Accessibility Guidelines",
+      "url": "https://developer.apple.com/accessibility/",
+      "description": "Apple's accessibility programming and design resources."
+    },
+    {
+      "name": "WCAG 2.1",
+      "url": "https://www.w3.org/TR/WCAG21/",
+      "description": "Web Content Accessibility Guidelines used as baseline for mobile accessibility."
+    },
+    {
+      "name": "App Store Review Guidelines",
+      "url": "https://developer.apple.com/app-store/review/guidelines/",
+      "description": "Guidelines for app submission and approval on the App Store."
+    }
+  ],
+  "regulations": [
+    {
+      "id": "IOS-001",
+      "category": "typography",
+      "title": "Dynamic Type Support",
+      "description": "All text elements must support Dynamic Type to respect user font size preferences across the system.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-001-01",
+          "description": "Minimum body text size",
+          "requirement": "Body text must use at minimum the system 'body' text style (17pt at default scale) or equivalent.",
+          "value": 17,
+          "unit": "pt",
+          "rationale": "The body text style is the baseline readable size on iOS devices."
+        },
+        {
+          "id": "IOS-001-02",
+          "description": "Dynamic Type adoption",
+          "requirement": "All text must scale with Dynamic Type using UIFont.preferredFont(forTextStyle:) or the equivalent SwiftUI .font() modifier with system text styles.",
+          "rationale": "Users who configure larger text sizes expect all apps to respect their preference."
+        },
+        {
+          "id": "IOS-001-03",
+          "description": "Large Content Viewer",
+          "requirement": "UI elements that cannot scale with Dynamic Type (e.g., tab bar labels, navigation bar titles) must support the Large Content Viewer accessibility feature.",
+          "rationale": "The Large Content Viewer provides a zoomed preview for elements that can't grow."
+        },
+        {
+          "id": "IOS-001-04",
+          "description": "Text truncation handling",
+          "requirement": "Text containers must gracefully handle larger text sizes by wrapping, scrolling, or expanding. Text must never be clipped without providing access to the full content.",
+          "rationale": "Clipped text at larger Dynamic Type sizes makes content inaccessible."
+        }
+      ],
+      "tags": ["dynamic-type", "typography", "hig", "accessibility"],
+      "references": [
+        {
+          "name": "HIG Typography",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/typography"
+        }
+      ]
+    },
+    {
+      "id": "IOS-002",
+      "category": "color",
+      "title": "Color and Appearance",
+      "description": "Applications must implement a thoughtful color system that works across light and dark modes and meets accessibility requirements.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-002-01",
+          "description": "Color contrast compliance",
+          "requirement": "Text and essential icons must meet WCAG 2.1 Level AA contrast ratios: 4.5:1 for normal text and 3:1 for large text (18pt+ or 14pt+ bold).",
+          "value": 4.5,
+          "unit": "ratio",
+          "rationale": "Sufficient contrast is required for readability in varied lighting conditions."
+        },
+        {
+          "id": "IOS-002-02",
+          "description": "Dark Mode support",
+          "requirement": "Applications must provide a full Dark Mode implementation using semantic/adaptive colors from the system palette or Asset Catalog named colors.",
+          "rationale": "Dark Mode is an expected iOS feature; apps without it appear broken in dark environments."
+        },
+        {
+          "id": "IOS-002-03",
+          "description": "System color usage",
+          "requirement": "Applications should prefer system-provided semantic colors (e.g., .label, .secondaryLabel, .systemBackground) which automatically adapt to appearance modes and accessibility settings.",
+          "rationale": "System colors automatically handle dark mode, high contrast, and reduce transparency settings."
+        },
+        {
+          "id": "IOS-002-04",
+          "description": "Color independence",
+          "requirement": "Color must not be the sole means of conveying meaning. Additional indicators such as shapes, icons, patterns, or text must supplement color-coded information.",
+          "rationale": "Color-blind users cannot distinguish information conveyed by color alone."
+        },
+        {
+          "id": "IOS-002-05",
+          "description": "Increase Contrast support",
+          "requirement": "Applications must support the 'Increase Contrast' accessibility setting by providing high-contrast color variants in the Asset Catalog.",
+          "rationale": "Users with low vision may enable Increase Contrast for better visibility."
+        }
+      ],
+      "tags": ["color", "dark-mode", "accessibility", "hig"],
+      "references": [
+        {
+          "name": "HIG Color",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/color"
+        }
+      ]
+    },
+    {
+      "id": "IOS-003",
+      "category": "spacing",
+      "title": "Layout and Spacing",
+      "description": "Applications must use iOS layout system conventions to ensure consistent spacing across all device sizes and orientations.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-003-01",
+          "description": "Minimum tap target size",
+          "requirement": "All interactive elements must have a minimum tap target of 44x44 points.",
+          "value": 44,
+          "unit": "pt",
+          "rationale": "Apple's HIG specifies 44pt as the minimum comfortable tap target size."
+        },
+        {
+          "id": "IOS-003-02",
+          "description": "Safe Area adherence",
+          "requirement": "Content must be positioned within the Safe Area to avoid being obscured by the notch, Dynamic Island, home indicator, or rounded corners.",
+          "rationale": "Ignoring Safe Areas causes content to be hidden behind hardware features."
+        },
+        {
+          "id": "IOS-003-03",
+          "description": "Layout margins",
+          "requirement": "Content must use the system layout margins (at least 16pt on compact width, 20pt on regular width) for consistent edge spacing.",
+          "value": 16,
+          "unit": "pt",
+          "rationale": "System layout margins ensure content is well-inset and consistent with the platform."
+        },
+        {
+          "id": "IOS-003-04",
+          "description": "Multitasking layout support",
+          "requirement": "Applications must support all multitasking modes on iPad including Split View, Slide Over, and Stage Manager by using adaptive layouts.",
+          "rationale": "iPad users expect apps to work seamlessly in multitasking configurations."
+        }
+      ],
+      "tags": ["layout", "spacing", "safe-area", "adaptive-layout"],
+      "references": [
+        {
+          "name": "HIG Layout",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/layout"
+        }
+      ]
+    },
+    {
+      "id": "IOS-004",
+      "category": "accessibility",
+      "title": "Accessibility Compliance",
+      "description": "Applications must be fully accessible using VoiceOver, Switch Control, and other iOS assistive technologies.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-004-01",
+          "description": "VoiceOver labels",
+          "requirement": "All interactive elements and meaningful images must have descriptive accessibilityLabel values. Decorative images must be marked as not accessible.",
+          "rationale": "VoiceOver reads accessibility labels aloud; missing labels render the app unusable."
+        },
+        {
+          "id": "IOS-004-02",
+          "description": "Accessibility traits",
+          "requirement": "Elements must have correct accessibilityTraits (button, header, link, image, etc.) so assistive technologies convey the element's role properly.",
+          "rationale": "Correct traits help VoiceOver users understand what an element does."
+        },
+        {
+          "id": "IOS-004-03",
+          "description": "Reduce Motion support",
+          "requirement": "Applications must respect the 'Reduce Motion' accessibility preference by replacing complex animations with simple dissolve transitions or removing them entirely.",
+          "rationale": "Motion can cause nausea or discomfort for users with vestibular disorders."
+        },
+        {
+          "id": "IOS-004-04",
+          "description": "Focus management",
+          "requirement": "When content changes (navigation, modals, alerts), accessibility focus must be moved to the new content so VoiceOver users are aware of the change.",
+          "rationale": "Without focus management, VoiceOver users may not realize the screen has changed."
+        },
+        {
+          "id": "IOS-004-05",
+          "description": "Custom action support",
+          "requirement": "Complex gestures (swipe-to-delete, long press menus) must provide accessible alternatives via accessibilityCustomActions or standard system gestures.",
+          "rationale": "Users of Switch Control and VoiceOver cannot perform custom gestures."
+        }
+      ],
+      "tags": ["accessibility", "voiceover", "switch-control", "a11y"],
+      "references": [
+        {
+          "name": "Apple Accessibility Programming Guide",
+          "url": "https://developer.apple.com/accessibility/"
+        }
+      ]
+    },
+    {
+      "id": "IOS-005",
+      "category": "components",
+      "title": "Component Standards",
+      "description": "UI components must follow Human Interface Guidelines patterns for consistent, intuitive user experiences.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "IOS-005-01",
+          "description": "Standard navigation patterns",
+          "requirement": "Applications must use UINavigationController (push/pop) for hierarchical navigation and UITabBarController for flat, top-level navigation between sections.",
+          "rationale": "Standard navigation patterns are familiar to iOS users and integrate with system gestures."
+        },
+        {
+          "id": "IOS-005-02",
+          "description": "Action sheet usage",
+          "requirement": "Action Sheets must be used for presenting a set of alternatives related to an action the user initiated. Action Sheets must include a cancel option.",
+          "rationale": "Action Sheets are the iOS convention for contextual choices and must be dismissible."
+        },
+        {
+          "id": "IOS-005-03",
+          "description": "Alert usage",
+          "requirement": "Alerts must be reserved for important information requiring acknowledgment or a critical decision. Alerts must have concise titles and offer clear action buttons.",
+          "rationale": "Excessive alerts train users to dismiss them without reading, reducing their effectiveness."
+        },
+        {
+          "id": "IOS-005-04",
+          "description": "Pull-to-refresh",
+          "requirement": "Scrollable lists of updatable content should implement the standard UIRefreshControl pull-to-refresh pattern.",
+          "rationale": "Pull-to-refresh is a deeply ingrained iOS gesture that users expect for refreshing content."
+        }
+      ],
+      "tags": ["components", "navigation", "hig", "ui-patterns"],
+      "references": [
+        {
+          "name": "HIG Components",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/components"
+        }
+      ]
+    },
+    {
+      "id": "IOS-006",
+      "category": "navigation",
+      "title": "Navigation and Gestures",
+      "description": "Navigation must follow iOS platform conventions and support standard system gestures.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-006-01",
+          "description": "Edge swipe back gesture",
+          "requirement": "Applications using navigation controllers must not disable the interactive edge-swipe-back gesture. Custom gesture recognizers must not conflict with it.",
+          "rationale": "The swipe-back gesture is fundamental to iOS navigation; disabling it confuses users."
+        },
+        {
+          "id": "IOS-006-02",
+          "description": "Navigation bar back button",
+          "requirement": "Navigation bars must include a visible back button with the previous screen's title. Custom back buttons must maintain the chevron icon and back navigation behavior.",
+          "rationale": "The back button is the primary visual indicator of navigational hierarchy."
+        },
+        {
+          "id": "IOS-006-03",
+          "description": "Tab bar persistence",
+          "requirement": "The tab bar must remain visible during navigation within each tab's hierarchy unless the user enters a focused, immersive experience.",
+          "rationale": "Hiding the tab bar unexpectedly disorients users within the app's structure."
+        }
+      ],
+      "tags": ["navigation", "gestures", "hig"],
+      "references": [
+        {
+          "name": "HIG Navigation",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/navigation"
+        }
+      ]
+    },
+    {
+      "id": "IOS-007",
+      "category": "motion",
+      "title": "Animation and Motion",
+      "description": "Animations must feel fluid and purposeful, adhering to iOS motion principles.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "IOS-007-01",
+          "description": "Spring animation preference",
+          "requirement": "Animations should use spring-based timing curves for natural-feeling motion. Linear and ease-in-out curves should be used sparingly.",
+          "rationale": "Spring animations are the signature motion style of iOS and feel natural."
+        },
+        {
+          "id": "IOS-007-02",
+          "description": "Animation duration",
+          "requirement": "Standard UI transitions should be between 250ms and 450ms. Micro-interactions should be 100ms to 200ms.",
+          "value": "250-450",
+          "unit": "ms",
+          "rationale": "iOS animations feel fast and responsive within these ranges."
+        },
+        {
+          "id": "IOS-007-03",
+          "description": "Reduce Motion compliance",
+          "requirement": "When Reduce Motion is enabled, replace slide transitions with cross-dissolves and disable parallax, bouncing, and scaling animations.",
+          "rationale": "Compliance with Reduce Motion is essential for users with vestibular conditions."
+        }
+      ],
+      "tags": ["motion", "animation", "spring", "reduce-motion"]
+    },
+    {
+      "id": "IOS-008",
+      "category": "feedback",
+      "title": "Feedback and Communication",
+      "description": "Applications must provide clear, consistent feedback using iOS platform patterns.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-008-01",
+          "description": "Haptic feedback",
+          "requirement": "Applications must use the UIFeedbackGenerator APIs for haptic feedback on supported devices. Impact, notification, and selection feedback types must match the context of the interaction.",
+          "rationale": "Appropriate haptics enhance the tactile quality of the experience on iOS."
+        },
+        {
+          "id": "IOS-008-02",
+          "description": "Error presentation",
+          "requirement": "Errors must be presented in context (inline near the affected element) rather than as top-level alerts whenever possible. Error messages must describe the problem and offer a recovery path.",
+          "rationale": "Inline errors reduce disruption and help users understand what to fix."
+        },
+        {
+          "id": "IOS-008-03",
+          "description": "Loading states",
+          "requirement": "Loading states must use the system UIActivityIndicatorView for indeterminate progress or UIProgressView for determinate progress. Skeleton screens are preferred for content loading.",
+          "rationale": "Consistent loading indicators set user expectations about wait times."
+        }
+      ],
+      "tags": ["feedback", "haptics", "errors", "loading"],
+      "references": [
+        {
+          "name": "HIG Feedback",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/feedback"
+        }
+      ]
+    },
+    {
+      "id": "IOS-009",
+      "category": "privacy",
+      "title": "Privacy and Data Handling",
+      "description": "Applications must follow Apple's privacy principles and App Store requirements for user data handling.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "IOS-009-01",
+          "description": "Privacy nutrition labels",
+          "requirement": "Applications must accurately declare all data collection and usage in the App Store privacy nutrition labels.",
+          "rationale": "Inaccurate privacy labels can result in App Store rejection and erode user trust."
+        },
+        {
+          "id": "IOS-009-02",
+          "description": "Permission request context",
+          "requirement": "Permission requests (camera, location, notifications) must include a clear, specific purpose string explaining why the permission is needed at the moment it is requested.",
+          "rationale": "Contextual, just-in-time permission requests have higher grant rates and are required by Apple."
+        },
+        {
+          "id": "IOS-009-03",
+          "description": "App Tracking Transparency",
+          "requirement": "Applications that track users across other apps or websites must present the ATT (App Tracking Transparency) prompt before collecting any tracking data.",
+          "rationale": "ATT is mandatory as of iOS 14.5 and failure to comply results in App Store rejection."
+        }
+      ],
+      "tags": ["privacy", "app-store", "att", "permissions"]
+    },
+    {
+      "id": "IOS-010",
+      "category": "iconography",
+      "title": "Icon and Image Standards",
+      "description": "Icons and images must follow Apple's design guidelines for clarity and platform consistency.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "IOS-010-01",
+          "description": "SF Symbols usage",
+          "requirement": "Applications should use SF Symbols for system-style icons to ensure consistency with the platform and automatic support for Dynamic Type, weight, and accessibility features.",
+          "rationale": "SF Symbols scale with text, support multiple weights, and are familiar to iOS users."
+        },
+        {
+          "id": "IOS-010-02",
+          "description": "App icon requirements",
+          "requirement": "Application icons must be provided as a single 1024x1024 point PNG image. The icon must not contain transparency or rounded corners (the system applies the mask).",
+          "value": 1024,
+          "unit": "pt",
+          "rationale": "The system derives all icon sizes from the single source image."
+        },
+        {
+          "id": "IOS-010-03",
+          "description": "Image resolution",
+          "requirement": "All raster images must be provided at @1x, @2x, and @3x resolutions or as vector (PDF/SVG) assets to support all device display scales.",
+          "rationale": "Missing resolution variants result in blurry images on higher-density screens."
+        }
+      ],
+      "tags": ["icons", "sf-symbols", "images", "app-icon"]
+    }
+  ]
+}

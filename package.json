@@ -1,0 +1,26 @@
+{
+  "name": "design-system-regulations",
+  "version": "1.0.0",
+  "description": "Design system regulation data for Android, iOS, Health, and Automotive domains",
+  "main": "scripts/validate.js",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "test": "node scripts/validate.js"
+  },
+  "keywords": [
+    "design-system",
+    "regulations",
+    "android",
+    "ios",
+    "health",
+    "automotive",
+    "accessibility",
+    "material-design",
+    "human-interface-guidelines"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
