@@ -1,6 +1,6 @@
 {
   "domain": "automotive",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "lastUpdated": "2026-04-13",
   "description": "Design system regulations for automotive in-vehicle infotainment (IVI) and head unit interfaces, based on NHTSA guidelines, ISO standards, and driver distraction research.",
   "references": [
@@ -609,6 +609,218 @@
           "name": "ISO 2575 - Symbols for Controls, Indicators and Tell-tales",
           "url": "https://www.iso.org/standard/72798.html",
           "version": "ISO 2575:2021 (4th edition)"
+        }
+      ]
+    },
+    {
+      "id": "AUT-012",
+      "category": "safety",
+      "title": "Telltale Design Requirements Catalog",
+      "description": "Per-telltale design specifications for each mandatory FMVSS 101 vehicle telltale indicator. Each entry defines the ISO 2575:2021 symbol reference, required display color per FMVSS 101 Table 1 and ISO 2575:2021 Section 4.1, minimum rendered symbol dimensions, activation conditions, blink rate where applicable, and digital rendering conformance requirements for instrument cluster and IVI displays.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-012-01",
+          "description": "Brake System Warning Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.15 — exclamation mark enclosed in a circle, or the FMVSS 101 Appendix A alternate (letter 'P' with brake shoe). Required color: Red. Minimum displayed size: 7 mm × 7 mm. Activation conditions: (a) hydraulic brake circuit failure (pressure differential between dual-circuit systems); (b) parking brake applied while vehicle speed exceeds 5 km/h; (c) low brake fluid level. Display behavior: steady illumination (no blink). In digital clusters the symbol must reside in the dedicated safety-critical telltale zone defined in AUT-011-04 and must not be masked by any application layer. Contrast ratio of symbol against background: minimum 4.5:1 per ISO 15008.",
+          "rationale": "49 CFR 571.101 (FMVSS No. 101) S5.1 and Table 1 item 1 mandate a brake system telltale in red. FMVSS 101 Appendix A provides the approved symbol. ISO 2575:2021 symbol 2.15 is the internationally harmonized equivalent. The brake warning is the highest-severity safety alert in any vehicle.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Brake_failure_indicator.svg",
+              "alt": "Red brake system warning telltale: exclamation mark inside a circle",
+              "caption": "Brake System Warning — ISO 2575:2021 ref. 2.15 / FMVSS 101 Appendix A"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-02",
+          "description": "Malfunction Indicator Lamp (MIL / Check Engine) Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 4.90 — silhouette of an internal combustion engine block, optionally with a lightning bolt overlay. Required color: Amber/Yellow. Minimum displayed size: 7 mm × 7 mm. Activation conditions: OBD-II emissions system fault per 40 CFR Part 86 and SAE J1979/ISO 15031-5. Display behavior: steady illumination for a stored diagnostic trouble code (DTC); continuous blink at 1 Hz for an active catalytic-converter-damaging misfire. Post-fault lamp-off: extinguishes only after three consecutive drive cycles with no fault recurrence. The MIL must not be co-located with the engine temperature or oil pressure telltale to avoid driver confusion.",
+          "rationale": "40 CFR Part 86.095-17(a)(3) and SAE J1979 mandate the MIL for OBD-II-equipped vehicles (model year 1996 and later in the US). FMVSS 101 Table 1 item 10 codifies color and symbol requirements. Immediate misfire indication (blink) is specified in SAE J1979 Section 7.1.1.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Check_engine_light.svg",
+              "alt": "Amber malfunction indicator lamp (MIL / check engine) telltale: outline silhouette of an engine block",
+              "caption": "Malfunction Indicator Lamp (MIL) — ISO 2575:2021 ref. 4.90 / FMVSS 101 Table 1 item 10"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-03",
+          "description": "Tire Pressure Monitoring System (TPMS) Warning Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.67 — cross-sectional view of a tire with an exclamation mark inside. Required color: Amber/Yellow. Minimum displayed size: 7 mm × 7 mm. Activation conditions per 49 CFR 571.138: lamp illuminates when any tire's cold-inflation pressure is 25% or more below the vehicle placard pressure; lamp blinks at approximately 1 Hz for 60–90 seconds then remains steady when a TPMS sensor battery is low or a sensor fault is detected. In digital clusters, the TPMS telltale may display a numeric pressure reading for the affected tire(s) as a supplemental label, but the ISO 2575:2021 symbol must always be present.",
+          "rationale": "49 CFR 571.138 (FMVSS No. 138) specifies the 25% threshold and mandates illumination within 20 minutes of under-inflation. FMVSS 101 Table 1 item 11 (added by 68 FR 67966, December 2003, effective model year 2007) specifies the amber color requirement. ISO 2575:2021 symbol 2.67 is the internationally harmonized symbol.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.138",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/TPMS_telltale_us.svg",
+              "alt": "Amber TPMS warning telltale: cross-section of a tire with an exclamation mark inside",
+              "caption": "TPMS Warning — ISO 2575:2021 ref. 2.67 / FMVSS No. 138"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-04",
+          "description": "Anti-lock Braking System (ABS) Warning Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.57 — letters 'ABS' enclosed in a circle or ring. Required color: Amber/Yellow. Minimum displayed size: 7 mm × 7 mm. Activation conditions: ABS control module self-test failure at ignition-on (self-test lamp, extinguishes within 3 seconds if system passes); ABS module fault during vehicle operation; loss of wheel speed sensor signal for any wheel. Display behavior: steady illumination on fault. The ABS telltale must illuminate simultaneously with the red brake system warning (AUT-012-01) only when a hydraulic brake failure also disables ABS. In digital clusters, 'ABS' text within the symbol must be legible at 7 mm minimum height; letterform proportions must not deviate from the ISO 2575:2021 reference.",
+          "rationale": "FMVSS No. 135 (49 CFR 571.135 S5.4) requires that ABS-equipped light vehicles include a visual indicator that activates on ABS malfunction. ISO 2575:2021 symbol 2.57 is the standardized symbol. Amber color indicates service-required severity, consistent with ISO 2575:2021 Section 4.1.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.135",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/ABS_warning_light.svg",
+              "alt": "Amber ABS warning telltale: letters ABS enclosed in a circle",
+              "caption": "ABS Warning — ISO 2575:2021 ref. 2.57 / FMVSS No. 135"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-05",
+          "description": "Seat Belt Reminder (SBR) Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.53 — seated human figure with a diagonal seat belt strap. Required color: Red. Minimum displayed size: 7 mm × 7 mm. Activation conditions per FMVSS 101 Table 1 item 8: front outboard occupant seat belt is not fastened when vehicle ignition is on. Display behavior: continuous illumination when unbuckled; an audible chime must accompany the lamp per FMVSS 101 S5.3. Enhanced SBR systems per NHTSA rulemaking (70 FR 72688, December 2005) may add a blink sequence (4 Hz, up to 30 seconds) followed by steady, with a repeated audible alarm for persistent non-buckled condition at speeds above 8 km/h. The seated-figure symbol must not be used for any other function in the instrument cluster.",
+          "rationale": "FMVSS 101 Table 1 item 8 mandates the seat belt telltale in red for all light vehicles. The associated audible warning is required by FMVSS 101 S5.3. ISO 2575:2021 symbol 2.53 is the harmonized international symbol. The seat belt reminder is among the most effective automotive safety interventions for increasing belt usage rates.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Seat_belt_indicator.svg",
+              "alt": "Red seat belt reminder telltale: seated human figure with diagonal seat belt strap across the chest",
+              "caption": "Seat Belt Reminder (SBR) — ISO 2575:2021 ref. 2.53 / FMVSS 101 Table 1 item 8"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-06",
+          "description": "Airbag / Supplemental Restraint System (SRS) Fault Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.54 — seated human figure with a fully deployed frontal airbag visible between the occupant and the steering wheel. Required color: Red. Minimum displayed size: 7 mm × 7 mm. Activation conditions: SRS control module fault; circuit fault in any airbag squib or pretensioner; arming sensor fault; readiness monitoring system failure per FMVSS 208 (49 CFR 571.208 S19). Display behavior: lamp illuminates at ignition-on for self-test (extinguishes within 7 seconds if system passes); steady illumination on fault. A fault condition must never extinguish the lamp without explicit system-level fault resolution. The SRS telltale must not be co-located with the seat belt reminder (AUT-012-05) to avoid driver confusion between belt status and airbag system health.",
+          "rationale": "FMVSS 208 S19 (49 CFR 571.208) mandates an airbag readiness indicator for all light vehicles with supplemental restraint systems, effective September 1, 1993. FMVSS 101 Table 1 item 9 codifies color (red) and location requirements. ISO 2575:2021 symbol 2.54 is the harmonized international symbol for airbag readiness.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.208",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Airbag_indicator.svg",
+              "alt": "Red airbag / SRS fault telltale: seated human figure with a deployed airbag between the occupant and the steering wheel",
+              "caption": "Airbag / SRS Fault Indicator — ISO 2575:2021 ref. 2.54 / FMVSS 208 S19 / FMVSS 101 Table 1 item 9"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-07",
+          "description": "Engine Oil Pressure Warning Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.12 — stylized oil lamp (Aladdin-type lantern) with a drop of oil dripping from the spout. Required color: Red. Minimum displayed size: 7 mm × 7 mm. Activation conditions: engine oil pressure drops below the manufacturer-specified critical threshold (typically ≤0.3 bar / 4.3 PSI at idle). Display behavior: steady illumination; immediate driver action required. The oil pressure telltale must appear in the dedicated safety-critical zone. It must not be confused with the engine oil level indicator (ISO 2575:2021 symbol 2.76, which uses an additional wavy liquid-level line). Where a numeric oil pressure value is displayed alongside the symbol, the ISO 2575:2021 symbol must still be present.",
+          "rationale": "FMVSS 101 Table 1 item 6 mandates an oil pressure warning in red. Critically low oil pressure causes rapid engine seizure; immediate illumination without delay is required. ISO 2575:2021 symbol 2.12 is the internationally harmonized symbol. The oil lamp symbol has been standardized in vehicle interfaces for over 50 years.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oil_pressure_warning.svg",
+              "alt": "Red engine oil pressure warning telltale: stylized oil lamp with a drop falling from the spout",
+              "caption": "Engine Oil Pressure Warning — ISO 2575:2021 ref. 2.12 / FMVSS 101 Table 1 item 6"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-08",
+          "description": "Battery / Charging System Warning Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.13 — rectangular battery outline with positive (+) terminal on the right and negative (−) terminal on the left, shown as tabs extending from the top. Required color: Red. Minimum displayed size: 7 mm × 7 mm. Activation conditions: charging system voltage drops below the regulated minimum (typically below 12.5 V on a 12 V system at idle); alternator or DC-DC converter fault; broken or missing alternator drive belt. Display behavior: steady illumination. In digital clusters for battery electric vehicles (BEVs), this symbol must not be repurposed for the high-voltage traction battery state of charge; BEV high-voltage system faults must use the appropriate ISO 2575:2021 EV-specific symbol (e.g., 2.80 series) and must not reuse the 12 V charge indicator symbol.",
+          "rationale": "FMVSS 101 Table 1 item 7 mandates a charge indicator in red. A charging system failure in a 12 V vehicle typically provides 15–30 minutes of residual operation before electrical system shutdown. ISO 2575:2021 symbol 2.13 is the internationally harmonized symbol.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Battery_charge_warning.svg",
+              "alt": "Red battery / charging system warning telltale: rectangular battery outline with positive and negative terminal tabs on top",
+              "caption": "Battery / Charging System Warning — ISO 2575:2021 ref. 2.13 / FMVSS 101 Table 1 item 7"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-09",
+          "description": "High-beam Headlamp Indicator Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.22 — headlamp lens with five or more parallel horizontal beams projecting forward to the left, indicating a wide-angle high-beam pattern. Required color: Blue. Minimum displayed size: 7 mm × 7 mm. Activation conditions: high-beam headlamps active (main-beam filament or LED/laser high-beam module energized). Display behavior: steady illumination whenever high-beams are on; extinguishes immediately when returning to low beam. In digital clusters, blue must not be used for any other operational-state indicator to prevent confusion with the high-beam state. Adaptive driving beam (ADB) systems: an ADB-active indicator (if provided) must use a distinct symbol from ISO 2575:2021 supplement and must not activate the standard high-beam symbol unless the ADB system is producing full high-beam output.",
+          "rationale": "FMVSS 101 Table 1 item 3 mandates a high-beam indicator in blue for all vehicles. ISO 2575:2021 Section 4.1 reserves blue exclusively for the high-beam headlamp active state, making it the only color reserved for a single specific function in the standard.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/High_beam_indicator.svg",
+              "alt": "Blue high-beam headlamp indicator telltale: headlamp lens with parallel horizontal beams projecting to the left",
+              "caption": "High-beam Headlamp Indicator — ISO 2575:2021 ref. 2.22 / FMVSS 101 Table 1 item 3"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-10",
+          "description": "Turn Signal Indicators (Left and Right) Telltales",
+          "requirement": "Symbols: ISO 2575:2021 symbol IDs 2.24 (left-pointing arrow) and 2.25 (right-pointing arrow), each rendered as a solid chevron or arrowhead. Required color: Amber (United States per FMVSS 101 Table 1 items 4 and 5; green is also permissible in markets following ECE Regulation No. 121). Minimum displayed size: 7 mm × 7 mm per arrow. Blink rate: 60–120 complete cycles per minute (1–2 Hz) per FMVSS 108 (49 CFR 571.108) and ISO 2575:2021 Section 5.1.1; the cluster indicator must be synchronized with the exterior lamps. Timing: lamp must begin flashing within 1 second of stalk activation. Separate left and right arrows must be displayed independently; a combined center arrow must not substitute for individual indicators. Hazard state: both arrows flash simultaneously and must be positioned symmetrically. Animation framerate must be sufficient to avoid stroboscopic aliasing in digital clusters.",
+          "rationale": "FMVSS 101 Table 1 items 4 and 5 mandate left and right turn signal telltales in amber. FMVSS 108 specifies the 60–120 cycles-per-minute flash rate for exterior signal lamps; the instrument cluster indicator must be synchronized. ISO 2575:2021 symbols 2.24 and 2.25 are the internationally harmonized symbols.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Turn_signal_left_indicator.svg",
+              "alt": "Amber left turn signal indicator telltale: left-pointing solid arrow",
+              "caption": "Left Turn Signal Indicator — ISO 2575:2021 ref. 2.24 / FMVSS 101 Table 1 item 4"
+            },
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Turn_signal_right_indicator.svg",
+              "alt": "Amber right turn signal indicator telltale: right-pointing solid arrow",
+              "caption": "Right Turn Signal Indicator — ISO 2575:2021 ref. 2.25 / FMVSS 101 Table 1 item 5"
+            }
+          ]
+        },
+        {
+          "id": "AUT-012-11",
+          "description": "Electronic Stability Control (ESC) Indicator Telltale",
+          "requirement": "Symbol: ISO 2575:2021 symbol ID 2.60 — vehicle silhouette viewed from above with skid marks or a curved arrow track behind the rear wheels, indicating vehicle instability. Required color: Amber for both active-intervention and fault states. Minimum displayed size: 7 mm × 7 mm. Two display states: (a) ESC Active (system intervening) — symbol blinks at 2 Hz during active brake or engine-torque intervention; (b) ESC Off / Fault — symbol illuminates steadily with an 'OFF' label beneath or the ISO 2575:2021 variant for ESC disabled/fault. Activation conditions per FMVSS 126 (49 CFR 571.126 S5.3.2): ESC module actively applying brake torque or reducing engine torque (active state); ESC disabled by driver; ESC module or wheel speed sensor fault. The ESC active state is informational and must not generate an audible alarm; only the ESC fault state may optionally use a chime.",
+          "rationale": "FMVSS 126 (49 CFR 571.126) mandates ESC on all light vehicles ≤3,856 kg effective model year 2012. S5.3.2 mandates the ESC malfunction indicator in amber. ISO 2575:2021 symbol 2.60 is the internationally harmonized symbol. Research (NHTSA Effectiveness of Electronic Stability Control, DOT HS 811 154) shows ESC reduces fatal single-vehicle crashes by up to 49%.",
+          "source_url": "https://www.ecfr.gov/current/title-49/part-571/section-571.126",
+          "images": [
+            {
+              "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Electronic_stability_control_indicator.svg",
+              "alt": "Amber electronic stability control (ESC) indicator telltale: vehicle silhouette viewed from above with skid track behind rear wheels",
+              "caption": "Electronic Stability Control (ESC) Indicator — ISO 2575:2021 ref. 2.60 / FMVSS No. 126"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "safety",
+        "telltale",
+        "warning-lamp",
+        "fmvss-101",
+        "fmvss-126",
+        "fmvss-138",
+        "iso-2575",
+        "instrument-cluster",
+        "symbol",
+        "compliance"
+      ],
+      "references": [
+        {
+          "name": "FMVSS No. 101 - Controls and Displays",
+          "url": "https://www.ecfr.gov/current/title-49/part-571/section-571.101",
+          "version": "49 CFR 571.101 (as codified 2024)"
+        },
+        {
+          "name": "ISO 2575 - Symbols for Controls, Indicators and Tell-tales",
+          "url": "https://www.iso.org/standard/72798.html",
+          "version": "ISO 2575:2021 (4th edition)"
+        },
+        {
+          "name": "FMVSS No. 126 - Electronic Stability Control Systems",
+          "url": "https://www.ecfr.gov/current/title-49/part-571/section-571.126",
+          "version": "49 CFR 571.126 (as codified 2024)"
+        },
+        {
+          "name": "FMVSS No. 135 - Light Vehicle Brake Systems",
+          "url": "https://www.ecfr.gov/current/title-49/part-571/section-571.135",
+          "version": "49 CFR 571.135 (as codified 2024)"
+        },
+        {
+          "name": "FMVSS No. 138 - Tire Pressure Monitoring Systems",
+          "url": "https://www.ecfr.gov/current/title-49/part-571/section-571.138",
+          "version": "49 CFR 571.138 (as codified 2024)"
+        },
+        {
+          "name": "FMVSS No. 208 - Occupant Crash Protection",
+          "url": "https://www.ecfr.gov/current/title-49/part-571/section-571.208",
+          "version": "49 CFR 571.208 (as codified 2024)"
         }
       ]
     }

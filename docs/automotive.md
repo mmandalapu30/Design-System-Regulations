@@ -1,6 +1,6 @@
 # Automotive Design Regulations
 
-**Domain:** `automotive` | **Version:** 1.1.0 | **Last Updated:** 2026-04-13
+**Domain:** `automotive` | **Version:** 1.2.0 | **Last Updated:** 2026-04-13
 
 Design system regulations for automotive in-vehicle infotainment (IVI) and head unit interfaces, based on NHTSA guidelines, ISO standards, and driver distraction research.
 
@@ -38,6 +38,7 @@ Design system regulations for automotive in-vehicle infotainment (IVI) and head 
 | [AUT-009](#aut-009-automotive-accessibility) | accessibility | Automotive Accessibility | 🔴 mandatory |
 | [AUT-010](#aut-010-automotive-motion-and-animation) | motion | Automotive Motion and Animation | 🔴 mandatory |
 | [AUT-011](#aut-011-vehicle-telltale-display-regulations) | safety | Vehicle Telltale Display Regulations | 🔴 mandatory |
+| [AUT-012](#aut-012-telltale-design-requirements-catalog) | safety | Telltale Design Requirements Catalog | 🔴 mandatory |
 
 **Severity key:** 🔴 mandatory · 🟡 recommended · 🔵 optional
 
@@ -259,5 +260,211 @@ Design system regulations for automotive in-vehicle infotainment (IVI) and head 
 | AUT-011-03 | Symbol conformance to ISO 2575:2021 | Each telltale symbol must use the standardized graphic symbol defined in ISO 2575:2021 (Road vehicles - Symbols for controls, indicators and tell-tales, 4th edition). Where FMVSS 101 Appendix A and ISO 2575:2021 both define a symbol for the same function, the ISO 2575:2021 symbol must be used. Custom symbols are only permissible for vehicle-specific functions not covered by ISO 2575:2021 and must not conflict with or resemble any ISO 2575:2021 symbol. Symbol color must match the color requirement in AUT-011-01. | — | — | ISO 2575:2021 (4th edition, supersedes ISO 2575:2010, ISO 2575:2004, and ISO 2575:1982) is the current international standard for vehicle indicator symbols adopted by FMVSS 101 by reference. Standardized symbols reduce driver learning time and enable cross-vehicle recognition. | [source](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
 | AUT-011-04 | Telltale visibility in digital instrument clusters | In digital instrument clusters and IVI-integrated displays: (1) FMVSS 101-required telltales must occupy a dedicated zone that cannot be obscured, overlaid, or displaced by navigation, media, or application content at any time; (2) Active red-severity telltales must remain visible regardless of the current IVI application or screen state; (3) Minimum telltale symbol display size: 7mm x 7mm in the driver-facing instrument cluster zone; (4) Display luminance must be adjustable between a daytime maximum sufficient for sunlight readability and a nighttime minimum that does not impair night vision, per 49 CFR 571.101 S5.2.1. | 7 | mm | 49 CFR 571.101 S5.2.1 requires telltales to be visible to the driver under all conditions. Digital cluster integration creates the architectural risk of application content obscuring safety-critical warning lamps, which must be prevented at the system level. | [source](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
 | AUT-011-05 | Regulatory version compliance tracking | Design specifications must document the specific regulatory version used for telltale compliance. Current applicable versions: (1) FMVSS No. 101 - 49 CFR 571.101 as currently codified in the Code of Federal Regulations; (2) ISO 2575:2021 - 4th edition (supersedes ISO 2575:2010, ISO 2575:2004, and ISO 2575:1982); (3) UNECE Regulation No. 121 - current revision, applicable to vehicles sold in UNECE-contracting-party markets outside the US. When a new edition of any referenced standard is published, affected designs must be evaluated for compliance impact within 24 months of the new standard's effective date. | — | — | FMVSS 101 has been amended multiple times since its initial 1967 publication, adding requirements for supplemental restraint system indicators (1992), TPMS (2003 Final Rule 68 FR 67966), and ESC indicators. ISO 2575 was last fully revised in 2021. Explicitly tracking standard versions enables compliance traceability and ensures designs are verified against a specific edition. | [source](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+---
+
+## AUT-012 — Telltale Design Requirements Catalog
+
+> Per-telltale design specifications for each mandatory FMVSS 101 vehicle telltale indicator. Each entry defines the ISO 2575:2021 symbol reference, required display color, minimum rendered symbol dimensions, activation conditions, blink rate where applicable, and digital rendering conformance requirements for instrument cluster and IVI displays.
+
+**Category:** safety | **Severity:** 🔴 mandatory  
+**Tags:** `safety` `telltale` `warning-lamp` `fmvss-101` `fmvss-126` `fmvss-138` `iso-2575` `instrument-cluster` `symbol` `compliance`
+
+**References:**
+- [FMVSS No. 101 - Controls and Displays](https://www.ecfr.gov/current/title-49/part-571/section-571.101) *(version: 49 CFR 571.101 (as codified 2024))*
+- [ISO 2575 - Symbols for Controls, Indicators and Tell-tales](https://www.iso.org/standard/72798.html) *(version: ISO 2575:2021 (4th edition))*
+- [FMVSS No. 126 - Electronic Stability Control Systems](https://www.ecfr.gov/current/title-49/part-571/section-571.126) *(version: 49 CFR 571.126 (as codified 2024))*
+- [FMVSS No. 135 - Light Vehicle Brake Systems](https://www.ecfr.gov/current/title-49/part-571/section-571.135) *(version: 49 CFR 571.135 (as codified 2024))*
+- [FMVSS No. 138 - Tire Pressure Monitoring Systems](https://www.ecfr.gov/current/title-49/part-571/section-571.138) *(version: 49 CFR 571.138 (as codified 2024))*
+- [FMVSS No. 208 - Occupant Crash Protection](https://www.ecfr.gov/current/title-49/part-571/section-571.208) *(version: 49 CFR 571.208 (as codified 2024))*
+
+### Per-Telltale Design Specifications
+
+#### AUT-012-01 — Brake System Warning Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.15 — exclamation mark enclosed in a circle (alt: FMVSS 101 Appendix A 'P' with brake shoe) |
+| **Color** | 🔴 Red |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady (no blink) |
+| **Activation** | Hydraulic circuit failure; parking brake engaged while moving (>5 km/h); low brake fluid |
+| **Zone** | Dedicated safety-critical telltale zone (cannot be masked by any app layer) |
+| **Source** | [49 CFR 571.101 Table 1 item 1](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Brake System Warning — exclamation mark inside a circle](https://commons.wikimedia.org/wiki/Special:FilePath/Brake_failure_indicator.svg)  
+*Brake System Warning — ISO 2575:2021 ref. 2.15 / FMVSS 101 Appendix A*
+
+---
+
+#### AUT-012-02 — Malfunction Indicator Lamp (MIL / Check Engine) Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 4.90 — silhouette of an engine block (optionally with lightning bolt overlay) |
+| **Color** | 🟡 Amber/Yellow |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady = stored DTC; 1 Hz blink = active catalytic-converter-damaging misfire |
+| **Activation** | OBD-II emissions fault per 40 CFR Part 86 / SAE J1979 |
+| **Lamp-off Condition** | Three consecutive fault-free drive cycles |
+| **Source** | [49 CFR 571.101 Table 1 item 10](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Malfunction Indicator Lamp — engine block silhouette](https://commons.wikimedia.org/wiki/Special:FilePath/Check_engine_light.svg)  
+*Malfunction Indicator Lamp (MIL) — ISO 2575:2021 ref. 4.90 / FMVSS 101 Table 1 item 10*
+
+---
+
+#### AUT-012-03 — Tire Pressure Monitoring System (TPMS) Warning Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.67 — cross-sectional view of a tire with an exclamation mark inside |
+| **Color** | 🟡 Amber/Yellow |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady = tire ≥25% below placard pressure; 1 Hz blink (60–90 s) then steady = sensor fault |
+| **Activation** | Any tire ≥25% below cold-inflation placard pressure per 49 CFR 571.138 |
+| **Supplemental Display** | Optional adjacent numeric pressure readout; ISO symbol must always be present |
+| **Source** | [49 CFR 571.138](https://www.ecfr.gov/current/title-49/part-571/section-571.138) / [49 CFR 571.101 Table 1 item 11](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![TPMS Warning — tire cross-section with exclamation mark](https://commons.wikimedia.org/wiki/Special:FilePath/TPMS_telltale_us.svg)  
+*TPMS Warning — ISO 2575:2021 ref. 2.67 / FMVSS No. 138*
+
+---
+
+#### AUT-012-04 — Anti-lock Braking System (ABS) Warning Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.57 — letters 'ABS' enclosed in a circle or ring |
+| **Color** | 🟡 Amber/Yellow |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady on fault; self-test lamp at ignition-on (extinguishes ≤3 s on pass) |
+| **Activation** | ABS module fault; wheel speed sensor signal loss |
+| **Co-illumination** | May illuminate simultaneously with AUT-012-01 only when hydraulic failure also disables ABS |
+| **Source** | [49 CFR 571.135 S5.4](https://www.ecfr.gov/current/title-49/part-571/section-571.135) |
+
+![ABS Warning — letters ABS in a circle](https://commons.wikimedia.org/wiki/Special:FilePath/ABS_warning_light.svg)  
+*ABS Warning — ISO 2575:2021 ref. 2.57 / FMVSS No. 135*
+
+---
+
+#### AUT-012-05 — Seat Belt Reminder (SBR) Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.53 — seated human figure with diagonal seat belt strap |
+| **Color** | 🔴 Red |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady when unbuckled; enhanced SBR: 4 Hz blink (up to 30 s) then steady at speed >8 km/h |
+| **Activation** | Front outboard occupant seat belt unfastened at ignition-on |
+| **Audible Companion** | Chime required per FMVSS 101 S5.3 |
+| **Source** | [49 CFR 571.101 Table 1 item 8](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Seat Belt Reminder — seated figure with seat belt](https://commons.wikimedia.org/wiki/Special:FilePath/Seat_belt_indicator.svg)  
+*Seat Belt Reminder (SBR) — ISO 2575:2021 ref. 2.53 / FMVSS 101 Table 1 item 8*
+
+---
+
+#### AUT-012-06 — Airbag / Supplemental Restraint System (SRS) Fault Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.54 — seated human figure with deployed frontal airbag between occupant and steering wheel |
+| **Color** | 🔴 Red |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Self-test at ignition-on (extinguishes ≤7 s on pass); steady on fault |
+| **Activation** | SRS module fault; squib or pretensioner circuit fault; arming sensor fault per FMVSS 208 S19 |
+| **Fault Persistence** | Must not extinguish without explicit system-level fault resolution |
+| **Source** | [49 CFR 571.208 S19](https://www.ecfr.gov/current/title-49/part-571/section-571.208) / [49 CFR 571.101 Table 1 item 9](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Airbag / SRS Fault — seated figure with deployed airbag](https://commons.wikimedia.org/wiki/Special:FilePath/Airbag_indicator.svg)  
+*Airbag / SRS Fault Indicator — ISO 2575:2021 ref. 2.54 / FMVSS 208 S19*
+
+---
+
+#### AUT-012-07 — Engine Oil Pressure Warning Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.12 — stylized oil lamp (Aladdin-type lantern) with a drop dripping from the spout |
+| **Color** | 🔴 Red |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady; immediate driver action required |
+| **Activation** | Oil pressure below critical threshold (typically ≤0.3 bar / 4.3 PSI at idle) |
+| **Symbol Distinction** | Must not be confused with oil level indicator (ISO 2575:2021 symbol 2.76, adds wavy level line) |
+| **Source** | [49 CFR 571.101 Table 1 item 6](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Oil Pressure Warning — stylized oil lamp with drop](https://commons.wikimedia.org/wiki/Special:FilePath/Oil_pressure_warning.svg)  
+*Engine Oil Pressure Warning — ISO 2575:2021 ref. 2.12 / FMVSS 101 Table 1 item 6*
+
+---
+
+#### AUT-012-08 — Battery / Charging System Warning Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.13 — rectangular battery outline with (+) and (−) terminal tabs on top |
+| **Color** | 🔴 Red |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady |
+| **Activation** | Charging voltage below minimum; alternator/DC-DC fault; broken alternator belt |
+| **BEV Note** | Must not be repurposed for HV traction battery SoC; BEV HV faults use ISO 2575:2021 2.80-series symbols |
+| **Source** | [49 CFR 571.101 Table 1 item 7](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![Battery / Charging System Warning — battery outline with terminals](https://commons.wikimedia.org/wiki/Special:FilePath/Battery_charge_warning.svg)  
+*Battery / Charging System Warning — ISO 2575:2021 ref. 2.13 / FMVSS 101 Table 1 item 7*
+
+---
+
+#### AUT-012-09 — High-beam Headlamp Indicator Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.22 — headlamp lens with ≥5 parallel horizontal beams projecting forward-left |
+| **Color** | 🔵 Blue |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior** | Steady when high-beams active; extinguishes immediately on low-beam return |
+| **Activation** | High-beam filament or LED/laser module energized |
+| **Color Exclusivity** | Blue must not be used for any other indicator; it is exclusively reserved for this state per ISO 2575:2021 Section 4.1 |
+| **Source** | [49 CFR 571.101 Table 1 item 3](https://www.ecfr.gov/current/title-49/part-571/section-571.101) |
+
+![High-beam Headlamp Indicator — headlamp with parallel beams](https://commons.wikimedia.org/wiki/Special:FilePath/High_beam_indicator.svg)  
+*High-beam Headlamp Indicator — ISO 2575:2021 ref. 2.22 / FMVSS 101 Table 1 item 3*
+
+---
+
+#### AUT-012-10 — Turn Signal Indicators (Left and Right) Telltales
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbols** | 2.24 (left-pointing arrow) and 2.25 (right-pointing arrow) — solid chevron/arrowheads |
+| **Color** | 🟡 Amber (US per FMVSS 101); Green also permissible per ECE Reg. No. 121 |
+| **Minimum Size** | 7 mm × 7 mm per arrow |
+| **Blink Rate** | 60–120 cycles/minute (1–2 Hz) per FMVSS 108; synchronized with exterior lamps |
+| **Activation Timing** | Begins flashing within 1 second of stalk activation |
+| **Hazard State** | Both arrows flash simultaneously, positioned symmetrically |
+| **Constraint** | Separate left/right arrows required; combined center arrow is not a substitute |
+| **Source** | [49 CFR 571.101 Table 1 items 4–5](https://www.ecfr.gov/current/title-49/part-571/section-571.101) / [49 CFR 571.108](https://www.ecfr.gov/current/title-49/part-571/section-571.108) |
+
+![Left Turn Signal — left-pointing solid arrow](https://commons.wikimedia.org/wiki/Special:FilePath/Turn_signal_left_indicator.svg) ![Right Turn Signal — right-pointing solid arrow](https://commons.wikimedia.org/wiki/Special:FilePath/Turn_signal_right_indicator.svg)  
+*Left / Right Turn Signal Indicators — ISO 2575:2021 refs. 2.24 & 2.25 / FMVSS 101 Table 1 items 4–5*
+
+---
+
+#### AUT-012-11 — Electronic Stability Control (ESC) Indicator Telltale
+
+| Property | Value |
+|---|---|
+| **ISO 2575:2021 Symbol** | 2.60 — vehicle silhouette (top view) with skid marks or curved arrow track behind rear wheels |
+| **Color** | 🟡 Amber (both active-intervention and fault states) |
+| **Minimum Size** | 7 mm × 7 mm |
+| **Display Behavior — Active** | 2 Hz blink during ESC brake/engine-torque intervention (informational, no audible alarm) |
+| **Display Behavior — Fault/Off** | Steady, with 'OFF' label or ISO 2575:2021 fault variant |
+| **Activation** | ESC actively intervening; ESC disabled by driver; ESC module or wheel speed sensor fault per FMVSS 126 S5.3.2 |
+| **Applicability** | All light vehicles ≤3,856 kg, effective model year 2012 |
+| **Source** | [49 CFR 571.126 S5.3.2](https://www.ecfr.gov/current/title-49/part-571/section-571.126) |
+
+![ESC Indicator — vehicle silhouette with skid track](https://commons.wikimedia.org/wiki/Special:FilePath/Electronic_stability_control_indicator.svg)  
+*Electronic Stability Control (ESC) Indicator — ISO 2575:2021 ref. 2.60 / FMVSS No. 126*
 
 ---
