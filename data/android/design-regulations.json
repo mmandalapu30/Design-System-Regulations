@@ -1,0 +1,398 @@
+{
+  "domain": "android",
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-13",
+  "description": "Design system regulations for Android applications based on Material Design 3 guidelines, Google Play requirements, and WCAG accessibility standards.",
+  "references": [
+    {
+      "name": "Material Design 3",
+      "url": "https://m3.material.io/",
+      "description": "Google's open-source design system for building beautiful, usable products."
+    },
+    {
+      "name": "Android Accessibility Guidelines",
+      "url": "https://developer.android.com/guide/topics/ui/accessibility",
+      "description": "Official Android accessibility developer documentation."
+    },
+    {
+      "name": "WCAG 2.1",
+      "url": "https://www.w3.org/TR/WCAG21/",
+      "description": "Web Content Accessibility Guidelines used as baseline for mobile accessibility."
+    },
+    {
+      "name": "Google Play Design Guidelines",
+      "url": "https://developer.android.com/distribute/best-practices/develop/design-for-quality",
+      "description": "Quality guidelines for apps distributed on Google Play."
+    }
+  ],
+  "regulations": [
+    {
+      "id": "AND-001",
+      "category": "typography",
+      "title": "Type Scale Compliance",
+      "description": "All text elements must follow the Material Design 3 type scale to ensure consistent, readable typography across the application.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-001-01",
+          "description": "Minimum body text size",
+          "requirement": "Body text must be at least 14sp to ensure readability on all device sizes.",
+          "value": 14,
+          "unit": "sp",
+          "rationale": "Text below 14sp becomes difficult to read on standard mobile screens."
+        },
+        {
+          "id": "AND-001-02",
+          "description": "Headline hierarchy",
+          "requirement": "Applications must use a clear type hierarchy with distinct sizes for display, headline, title, body, and label roles.",
+          "rationale": "A well-defined type hierarchy helps users scan and understand content structure."
+        },
+        {
+          "id": "AND-001-03",
+          "description": "Font scaling support",
+          "requirement": "All text must support user-configured font scaling up to 200% without content being clipped or overlapping.",
+          "value": 200,
+          "unit": "percent",
+          "rationale": "Users with low vision rely on system font scaling to read content."
+        },
+        {
+          "id": "AND-001-04",
+          "description": "Use scalable text units",
+          "requirement": "Text sizes must be specified in sp (scale-independent pixels) rather than dp or px to respect user font size preferences.",
+          "rationale": "The sp unit scales with user accessibility settings while dp and px do not."
+        }
+      ],
+      "tags": ["material-design", "typography", "readability"],
+      "references": [
+        {
+          "name": "Material Design 3 Typography",
+          "url": "https://m3.material.io/styles/typography/overview"
+        }
+      ]
+    },
+    {
+      "id": "AND-002",
+      "category": "color",
+      "title": "Color System and Theming",
+      "description": "Applications must implement a robust color system using Material Design 3 dynamic color and token-based theming.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-002-01",
+          "description": "Color contrast for text",
+          "requirement": "Normal text must have a contrast ratio of at least 4.5:1 against its background. Large text (18sp+ or 14sp+ bold) must have at least 3:1.",
+          "value": 4.5,
+          "unit": "ratio",
+          "rationale": "WCAG 2.1 Level AA requires these minimum contrast ratios for readable text."
+        },
+        {
+          "id": "AND-002-02",
+          "description": "Dark theme support",
+          "requirement": "Applications must provide a dark theme that respects system-level dark mode settings and uses appropriate surface and on-surface colors.",
+          "rationale": "Dark themes reduce eye strain, save battery on OLED displays, and are expected by users."
+        },
+        {
+          "id": "AND-002-03",
+          "description": "Color not as sole indicator",
+          "requirement": "Color must not be the only means of conveying information. Additional visual cues such as icons, patterns, or text labels must accompany color-coded elements.",
+          "rationale": "Approximately 8% of men and 0.5% of women have color vision deficiency."
+        },
+        {
+          "id": "AND-002-04",
+          "description": "Dynamic color compatibility",
+          "requirement": "Applications targeting Android 12+ should support Material You dynamic color to harmonize with the user's wallpaper and theme.",
+          "rationale": "Dynamic color creates a personalized experience and visual consistency across the OS."
+        }
+      ],
+      "tags": ["material-design", "color", "theming", "accessibility"],
+      "references": [
+        {
+          "name": "Material Design 3 Color System",
+          "url": "https://m3.material.io/styles/color/overview"
+        }
+      ]
+    },
+    {
+      "id": "AND-003",
+      "category": "spacing",
+      "title": "Spacing and Layout Grid",
+      "description": "Layout and spacing must follow Material Design's 8dp grid system to maintain visual rhythm and consistency.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-003-01",
+          "description": "Base grid unit",
+          "requirement": "All spacing values (margins, padding, gaps) must be multiples of 8dp. Small elements may use 4dp for tighter spacing.",
+          "value": 8,
+          "unit": "dp",
+          "rationale": "An 8dp grid creates consistent spatial relationships and aligns with screen pixel densities."
+        },
+        {
+          "id": "AND-003-02",
+          "description": "Minimum touch target size",
+          "requirement": "Interactive elements must have a minimum touch target size of 48x48dp.",
+          "value": 48,
+          "unit": "dp",
+          "rationale": "Touch targets smaller than 48dp cause user frustration and accessibility failures."
+        },
+        {
+          "id": "AND-003-03",
+          "description": "Screen edge margins",
+          "requirement": "Content must maintain at least 16dp horizontal margins from the screen edges on mobile devices.",
+          "value": 16,
+          "unit": "dp",
+          "rationale": "Adequate margins prevent accidental edge interactions and improve readability."
+        },
+        {
+          "id": "AND-003-04",
+          "description": "Adaptive layout breakpoints",
+          "requirement": "Layouts must adapt across compact (<600dp), medium (600-840dp), and expanded (>840dp) width breakpoints.",
+          "rationale": "Android devices range from phones to tablets to foldables and need responsive layouts."
+        }
+      ],
+      "tags": ["material-design", "spacing", "layout", "responsive"],
+      "references": [
+        {
+          "name": "Material Design 3 Layout",
+          "url": "https://m3.material.io/foundations/layout/understanding-layout/overview"
+        }
+      ]
+    },
+    {
+      "id": "AND-004",
+      "category": "accessibility",
+      "title": "Accessibility Requirements",
+      "description": "Applications must meet WCAG 2.1 Level AA and Android-specific accessibility requirements to be usable by all people.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-004-01",
+          "description": "Content descriptions",
+          "requirement": "All meaningful images and icons must have contentDescription attributes. Decorative images must have contentDescription set to null.",
+          "rationale": "Screen readers (TalkBack) rely on content descriptions to convey non-text elements."
+        },
+        {
+          "id": "AND-004-02",
+          "description": "Focus order",
+          "requirement": "Interactive elements must have a logical focus traversal order that follows the visual reading flow of the screen.",
+          "rationale": "Keyboard and switch device users navigate sequentially and need a predictable order."
+        },
+        {
+          "id": "AND-004-03",
+          "description": "State announcements",
+          "requirement": "Changes in UI state (loading, errors, success) must be announced to accessibility services using live regions or announcements.",
+          "rationale": "Users relying on screen readers cannot see visual state changes."
+        },
+        {
+          "id": "AND-004-04",
+          "description": "Touch target spacing",
+          "requirement": "Adjacent touch targets must have at least 8dp of spacing between them to prevent mis-taps.",
+          "value": 8,
+          "unit": "dp",
+          "rationale": "Closely spaced targets are difficult for users with motor impairments."
+        }
+      ],
+      "tags": ["accessibility", "wcag", "talkback", "a11y"],
+      "references": [
+        {
+          "name": "Android Accessibility Developer Guide",
+          "url": "https://developer.android.com/guide/topics/ui/accessibility"
+        }
+      ]
+    },
+    {
+      "id": "AND-005",
+      "category": "components",
+      "title": "Component Usage Standards",
+      "description": "UI components must follow Material Design 3 component specifications for consistent behavior and appearance.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "AND-005-01",
+          "description": "Button hierarchy",
+          "requirement": "Screens should use a clear button hierarchy: one filled button for the primary action, tonal or outlined buttons for secondary actions, and text buttons for tertiary actions.",
+          "rationale": "A clear visual hierarchy helps users identify the most important action quickly."
+        },
+        {
+          "id": "AND-005-02",
+          "description": "Navigation patterns",
+          "requirement": "Applications must use standard navigation components (Navigation Bar, Navigation Rail, Navigation Drawer) appropriate for the device form factor.",
+          "rationale": "Familiar navigation patterns reduce cognitive load and learning time."
+        },
+        {
+          "id": "AND-005-03",
+          "description": "Dialog usage",
+          "requirement": "Dialogs must be used sparingly for critical decisions and should include a clear title, body, and action buttons. Dialogs must be dismissible.",
+          "rationale": "Overuse of dialogs interrupts workflow and fatigues users."
+        },
+        {
+          "id": "AND-005-04",
+          "description": "Loading indicators",
+          "requirement": "Operations taking longer than 1 second must display a loading indicator. Operations taking longer than 10 seconds should show a progress bar with percentage or determinate progress.",
+          "value": 1,
+          "unit": "seconds",
+          "rationale": "Users need feedback that the system is working to prevent repeated taps or abandonment."
+        }
+      ],
+      "tags": ["material-design", "components", "ui-patterns"],
+      "references": [
+        {
+          "name": "Material Design 3 Components",
+          "url": "https://m3.material.io/components"
+        }
+      ]
+    },
+    {
+      "id": "AND-006",
+      "category": "navigation",
+      "title": "Navigation Architecture",
+      "description": "Applications must implement predictable, consistent navigation that follows Android platform conventions.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-006-01",
+          "description": "System back behavior",
+          "requirement": "The system back button/gesture must behave predictably: closing dialogs, popping the back stack, or exiting the application. Custom back behavior must be communicated clearly.",
+          "rationale": "Inconsistent back behavior is a top source of user confusion on Android."
+        },
+        {
+          "id": "AND-006-02",
+          "description": "Deep link support",
+          "requirement": "Key application destinations must support deep linking to allow direct access from notifications, widgets, and external links.",
+          "rationale": "Deep linking improves discoverability and integration with the Android ecosystem."
+        },
+        {
+          "id": "AND-006-03",
+          "description": "Navigation state preservation",
+          "requirement": "Navigation state must be preserved across configuration changes (rotation, resizing) and process death.",
+          "rationale": "Users lose trust in applications that reset their position unexpectedly."
+        }
+      ],
+      "tags": ["navigation", "back-stack", "deep-links"],
+      "references": [
+        {
+          "name": "Android Navigation Principles",
+          "url": "https://developer.android.com/guide/navigation/navigation-principles"
+        }
+      ]
+    },
+    {
+      "id": "AND-007",
+      "category": "motion",
+      "title": "Motion and Animation",
+      "description": "Animations and transitions must enhance usability while respecting user motion preferences.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "AND-007-01",
+          "description": "Reduce motion support",
+          "requirement": "Applications must respect the system 'Remove Animations' accessibility setting by disabling or reducing non-essential animations.",
+          "rationale": "Animations can cause discomfort for users with vestibular disorders."
+        },
+        {
+          "id": "AND-007-02",
+          "description": "Transition duration limits",
+          "requirement": "UI transitions should be between 200ms and 500ms. Transitions shorter than 100ms feel abrupt; transitions longer than 700ms feel sluggish.",
+          "value": "200-500",
+          "unit": "ms",
+          "rationale": "Appropriate duration ensures users can follow the transition without feeling delayed."
+        },
+        {
+          "id": "AND-007-03",
+          "description": "Purposeful animation",
+          "requirement": "Every animation must serve a functional purpose: guiding attention, showing spatial relationships, or providing feedback. Purely decorative loops are discouraged.",
+          "rationale": "Gratuitous animation wastes battery, distracts users, and hurts performance."
+        }
+      ],
+      "tags": ["motion", "animation", "performance", "accessibility"]
+    },
+    {
+      "id": "AND-008",
+      "category": "iconography",
+      "title": "Icon Standards",
+      "description": "Icons must follow Material Design icon guidelines for clarity and consistency.",
+      "severity": "recommended",
+      "rules": [
+        {
+          "id": "AND-008-01",
+          "description": "Icon sizing",
+          "requirement": "System icons must be 24dp in size within a 48dp touch target area. Smaller icons (20dp, 18dp) may be used in dense contexts like toolbars.",
+          "value": 24,
+          "unit": "dp",
+          "rationale": "Consistent icon sizing creates visual harmony and meets touch target requirements."
+        },
+        {
+          "id": "AND-008-02",
+          "description": "Icon labeling",
+          "requirement": "Icons used for primary navigation or actions must include a text label. Icon-only buttons are acceptable only for universally recognized actions (close, back, search).",
+          "rationale": "Icons without labels are frequently misinterpreted, especially across cultures."
+        },
+        {
+          "id": "AND-008-03",
+          "description": "Adaptive icons",
+          "requirement": "Application launcher icons must be provided as adaptive icons with separate foreground and background layers.",
+          "rationale": "Adaptive icons ensure the app icon renders correctly across different device shapes and launchers."
+        }
+      ],
+      "tags": ["iconography", "material-icons", "visual-design"]
+    },
+    {
+      "id": "AND-009",
+      "category": "feedback",
+      "title": "User Feedback Patterns",
+      "description": "Applications must provide clear, timely feedback for user actions and system events.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-009-01",
+          "description": "Error message clarity",
+          "requirement": "Error messages must be human-readable, describe what went wrong, and suggest a corrective action when possible. Generic messages like 'Error occurred' are prohibited.",
+          "rationale": "Clear error messages reduce user frustration and support requests."
+        },
+        {
+          "id": "AND-009-02",
+          "description": "Snackbar duration",
+          "requirement": "Snackbars must be displayed for at least 4 seconds and no more than 10 seconds. Snackbars with actions must remain until dismissed or acted upon.",
+          "value": "4-10",
+          "unit": "seconds",
+          "rationale": "Too-short snackbars are missed; too-long snackbars occlude content."
+        },
+        {
+          "id": "AND-009-03",
+          "description": "Haptic feedback",
+          "requirement": "Critical actions (delete, submit, error) should provide haptic feedback using the system haptic API when haptics are enabled.",
+          "rationale": "Haptic feedback reinforces actions for users who may not be looking at the screen."
+        }
+      ],
+      "tags": ["feedback", "errors", "snackbar", "haptics"]
+    },
+    {
+      "id": "AND-010",
+      "category": "privacy",
+      "title": "Privacy and Data Display",
+      "description": "Applications must handle user data display in accordance with privacy best practices and platform policies.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AND-010-01",
+          "description": "Sensitive data masking",
+          "requirement": "Sensitive data (passwords, payment info, personal identifiers) must be masked by default with an option to reveal temporarily.",
+          "rationale": "Visible sensitive data can be inadvertently exposed through screen sharing or shoulder surfing."
+        },
+        {
+          "id": "AND-010-02",
+          "description": "Permission rationale",
+          "requirement": "Before requesting a runtime permission, the application must display a UI explaining why the permission is needed and how it will be used.",
+          "rationale": "Users are more likely to grant permissions when they understand the purpose."
+        },
+        {
+          "id": "AND-010-03",
+          "description": "Secure screen flag",
+          "requirement": "Screens displaying sensitive information must set FLAG_SECURE to prevent screenshots and screen recording in secure contexts.",
+          "rationale": "FLAG_SECURE prevents data leakage through screenshots and recent apps preview."
+        }
+      ],
+      "tags": ["privacy", "security", "data-protection"]
+    }
+  ]
+}

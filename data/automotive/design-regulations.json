@@ -1,0 +1,434 @@
+{
+  "domain": "automotive",
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-13",
+  "description": "Design system regulations for automotive in-vehicle infotainment (IVI) and head unit interfaces, based on NHTSA guidelines, ISO standards, and driver distraction research.",
+  "references": [
+    {
+      "name": "NHTSA Visual-Manual Driver Distraction Guidelines",
+      "url": "https://www.nhtsa.gov/technology-innovation/driver-distraction",
+      "description": "National Highway Traffic Safety Administration guidelines for reducing driver distraction from in-vehicle electronic devices."
+    },
+    {
+      "name": "ISO 15005 - Dialogue Management",
+      "url": "https://www.iso.org/standard/55741.html",
+      "description": "International standard for ergonomic principles of dialogue management in transport information and control systems."
+    },
+    {
+      "name": "ISO 15008 - Road Vehicle Displays",
+      "url": "https://www.iso.org/standard/62794.html",
+      "description": "Specifications for presentation of information on road vehicle displays."
+    },
+    {
+      "name": "Android Automotive OS Design Guidelines",
+      "url": "https://developer.android.com/training/cars",
+      "description": "Google's design guidelines for Android Automotive OS applications."
+    },
+    {
+      "name": "Apple CarPlay Human Interface Guidelines",
+      "url": "https://developer.apple.com/carplay/documentation/CarPlay-App-Programming-Guide.pdf",
+      "description": "Apple's guidelines for designing CarPlay applications."
+    },
+    {
+      "name": "ISO 26262 Functional Safety",
+      "url": "https://www.iso.org/standard/68383.html",
+      "description": "Functional safety standard for road vehicles."
+    }
+  ],
+  "regulations": [
+    {
+      "id": "AUT-001",
+      "category": "safety",
+      "title": "Driver Distraction Prevention",
+      "description": "In-vehicle interfaces must minimize driver distraction in compliance with NHTSA guidelines and international driver distraction standards.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-001-01",
+          "description": "Glance time limit",
+          "requirement": "Any single glance at the display must not require more than 2 seconds of visual attention. Tasks requiring multiple glances must be completable within a total of 12 seconds.",
+          "value": 2,
+          "unit": "seconds",
+          "rationale": "NHTSA research shows glances longer than 2 seconds significantly increase crash risk."
+        },
+        {
+          "id": "AUT-001-02",
+          "description": "Task completion time",
+          "requirement": "Any driver-initiated task must be completable within 12 seconds of total glance time or must be blocked while the vehicle is in motion.",
+          "value": 12,
+          "unit": "seconds",
+          "rationale": "The NHTSA 12-second total glance time rule is the accepted standard for in-vehicle tasks."
+        },
+        {
+          "id": "AUT-001-03",
+          "description": "Motion lockout",
+          "requirement": "Complex interactions (text input, browsing lists longer than 6 items, video playback) must be disabled when the vehicle speed exceeds 5 mph (8 km/h). A clear message must explain why the feature is unavailable.",
+          "value": 5,
+          "unit": "mph",
+          "rationale": "Complex visual-manual tasks while driving are the leading cause of distraction-related crashes."
+        },
+        {
+          "id": "AUT-001-04",
+          "description": "Interaction simplicity",
+          "requirement": "Tasks must require no more than 3 steps (taps, swipes, or voice commands) to complete common actions while driving. Frequently used functions must be accessible in 1-2 interactions.",
+          "value": 3,
+          "unit": "steps",
+          "rationale": "Fewer interaction steps mean shorter eyes-off-road time and reduced cognitive load."
+        },
+        {
+          "id": "AUT-001-05",
+          "description": "Scrolling list limits",
+          "requirement": "Scrollable lists presented to the driver while the vehicle is in motion must not exceed 6 visible items per screen without paging or voice-assisted navigation.",
+          "value": 6,
+          "unit": "items",
+          "rationale": "NHTSA guidelines limit list browsing complexity to reduce visual search time."
+        }
+      ],
+      "tags": ["safety", "distraction", "nhtsa", "motion-lockout"],
+      "references": [
+        {
+          "name": "NHTSA Phase 2 Distraction Guidelines",
+          "url": "https://www.nhtsa.gov/technology-innovation/driver-distraction"
+        }
+      ]
+    },
+    {
+      "id": "AUT-002",
+      "category": "typography",
+      "title": "In-Vehicle Typography",
+      "description": "Text in automotive displays must be readable at a glance under all driving conditions.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-002-01",
+          "description": "Minimum character height",
+          "requirement": "Text on the center display must have a minimum character height of 6.4mm (approximately 18pt at standard viewing distance). Critical information (speed, warnings) must use at least 8mm character height.",
+          "value": 6.4,
+          "unit": "mm",
+          "rationale": "ISO 15008 specifies minimum character heights for legibility at driver viewing distances."
+        },
+        {
+          "id": "AUT-002-02",
+          "description": "Font selection",
+          "requirement": "Fonts must be sans-serif with open apertures and generous x-height. Recommended fonts include Roboto, San Francisco, Noto Sans, or purpose-built automotive fonts. Decorative or condensed fonts are prohibited.",
+          "rationale": "Sans-serif fonts with clear letterforms are most legible during brief glances at distance."
+        },
+        {
+          "id": "AUT-002-03",
+          "description": "Text content brevity",
+          "requirement": "On-screen text presented to the driver must be limited to essential information. Labels must not exceed 3 words. Notification messages must not exceed 2 lines of text.",
+          "value": 3,
+          "unit": "words",
+          "rationale": "Drivers cannot safely read long text; information must be conveyed in the shortest possible form."
+        },
+        {
+          "id": "AUT-002-04",
+          "description": "Dynamic text restrictions",
+          "requirement": "Scrolling, animated, or auto-updating text must not be displayed on screens visible to the driver while the vehicle is in motion.",
+          "rationale": "Moving text requires sustained visual attention incompatible with safe driving."
+        }
+      ],
+      "tags": ["typography", "iso-15008", "legibility", "glanceability"],
+      "references": [
+        {
+          "name": "ISO 15008 Display Requirements",
+          "url": "https://www.iso.org/standard/62794.html"
+        }
+      ]
+    },
+    {
+      "id": "AUT-003",
+      "category": "color",
+      "title": "Automotive Color System",
+      "description": "Colors in automotive displays must ensure visibility under all ambient lighting conditions and convey safety-critical information reliably.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-003-01",
+          "description": "Day/night contrast",
+          "requirement": "Displays must maintain a minimum contrast ratio of 3:1 in direct sunlight and must automatically adjust brightness for night driving to prevent glare. Night mode must use a dark background with light text.",
+          "value": 3,
+          "unit": "ratio",
+          "rationale": "Automotive displays must be readable in extreme lighting conditions from bright sun to darkness."
+        },
+        {
+          "id": "AUT-003-02",
+          "description": "Warning color semantics",
+          "requirement": "Red must be reserved exclusively for critical/danger alerts (engine failure, collision warning). Amber/yellow for caution/warnings. Green for normal/confirmed status. Blue for informational displays. These mappings must never be overridden.",
+          "rationale": "ISO 2575 and automotive industry conventions establish universal color meanings that drivers expect."
+        },
+        {
+          "id": "AUT-003-03",
+          "description": "Night mode color restrictions",
+          "requirement": "In night mode, the display must limit bright colors and use a predominantly dark palette. White backgrounds are prohibited. Maximum display brightness must be automatically capped to prevent glare adaptation loss.",
+          "rationale": "Bright displays at night cause pupil constriction and temporary blindness when looking back at the road."
+        },
+        {
+          "id": "AUT-003-04",
+          "description": "Color-independent information",
+          "requirement": "Safety-critical information must never rely on color alone. Shapes (triangle for warning, circle for prohibition), icons, and text labels must always accompany color coding.",
+          "rationale": "Up to 8% of male drivers have color vision deficiency; safety info must be perceivable by all."
+        },
+        {
+          "id": "AUT-003-05",
+          "description": "Ambient light adaptation",
+          "requirement": "Display color temperature and brightness must automatically adapt based on ambient light sensors. Manual brightness override must always be available.",
+          "rationale": "Static brightness causes either washed-out displays in daylight or blinding glare at night."
+        }
+      ],
+      "tags": ["color", "night-mode", "contrast", "safety-colors", "iso-2575"],
+      "references": [
+        {
+          "name": "ISO 2575 Vehicle Symbols",
+          "url": "https://www.iso.org/standard/72798.html"
+        }
+      ]
+    },
+    {
+      "id": "AUT-004",
+      "category": "layout",
+      "title": "In-Vehicle Display Layout",
+      "description": "Display layouts must prioritize safety-critical information and minimize visual search time.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-004-01",
+          "description": "Information hierarchy zones",
+          "requirement": "The display must be organized into priority zones: Zone 1 (top/center) for driving-critical information (speed, navigation turn, warnings); Zone 2 (middle) for active task content; Zone 3 (bottom/periphery) for status indicators and secondary controls.",
+          "rationale": "Zoned layouts reduce visual search time by placing critical information where drivers look first."
+        },
+        {
+          "id": "AUT-004-02",
+          "description": "Touch target size",
+          "requirement": "Touch targets must be at least 12.7mm x 12.7mm (approximately 48dp) with at least 6mm spacing between adjacent targets. Frequently used controls should be at least 20mm x 20mm.",
+          "value": 12.7,
+          "unit": "mm",
+          "rationale": "Larger touch targets compensate for vehicle vibration and the difficulty of precise touch while driving."
+        },
+        {
+          "id": "AUT-004-03",
+          "description": "Split attention minimization",
+          "requirement": "Navigation and speed information must be displayed in the driver's primary line of sight (instrument cluster or HUD) in addition to the center display.",
+          "rationale": "Reducing the angle between road view and display reduces eyes-off-road time."
+        },
+        {
+          "id": "AUT-004-04",
+          "description": "Consistent layout across modes",
+          "requirement": "Core navigation elements (home, back, media controls) must remain in fixed positions regardless of the active application or driving mode.",
+          "rationale": "Consistent control placement allows drivers to build muscle memory and reduce glance time."
+        }
+      ],
+      "tags": ["layout", "zones", "touch-targets", "hud"],
+      "references": [
+        {
+          "name": "ISO 15005 Dialogue Management",
+          "url": "https://www.iso.org/standard/55741.html"
+        }
+      ]
+    },
+    {
+      "id": "AUT-005",
+      "category": "interaction",
+      "title": "Driver Interaction Patterns",
+      "description": "Interaction patterns must be optimized for the driving context where visual and manual attention are limited.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-005-01",
+          "description": "Voice control as primary input",
+          "requirement": "All frequently used functions (navigation destination, phone calls, media selection, climate control) must be accessible via voice commands as an alternative to touch.",
+          "rationale": "Voice control allows drivers to keep their eyes on the road and hands closer to the wheel."
+        },
+        {
+          "id": "AUT-005-02",
+          "description": "Physical control integration",
+          "requirement": "Steering wheel controls and physical knobs/buttons must be supported for core functions (volume, track skip, call accept/reject, voice activation). Physical controls must take priority over touchscreen equivalents.",
+          "rationale": "Physical controls provide haptic feedback and can be operated without looking."
+        },
+        {
+          "id": "AUT-005-03",
+          "description": "Gesture simplicity",
+          "requirement": "Touch gestures must be limited to tap, swipe, and pinch-to-zoom (for maps only while parked). Multi-finger gestures, long presses, and complex gesture sequences are prohibited while driving.",
+          "rationale": "Complex gestures require visual attention to perform and verify, increasing distraction."
+        },
+        {
+          "id": "AUT-005-04",
+          "description": "Confirmation feedback",
+          "requirement": "Every driver interaction must produce immediate multi-modal feedback: visual change plus audio confirmation or haptic response within 250ms.",
+          "value": 250,
+          "unit": "ms",
+          "rationale": "Drivers who don't receive immediate feedback will look at the display to verify their action."
+        }
+      ],
+      "tags": ["interaction", "voice-control", "physical-controls", "gestures"],
+      "references": [
+        {
+          "name": "Android Automotive Interaction Guidelines",
+          "url": "https://developer.android.com/training/cars"
+        }
+      ]
+    },
+    {
+      "id": "AUT-006",
+      "category": "navigation",
+      "title": "In-Vehicle Navigation UI",
+      "description": "Navigation and map displays must provide clear guidance while minimizing driver distraction.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-006-01",
+          "description": "Turn instruction clarity",
+          "requirement": "Turn-by-turn navigation must display: a large directional arrow, distance to next maneuver in driver's preferred unit, street name, and lane guidance. Instructions must be readable in under 2 seconds.",
+          "value": 2,
+          "unit": "seconds",
+          "rationale": "Navigation instructions are safety-critical and must be instantly comprehensible."
+        },
+        {
+          "id": "AUT-006-02",
+          "description": "Map simplification while driving",
+          "requirement": "While the vehicle is in motion, maps must automatically reduce detail level: hiding non-essential POIs, simplifying road networks, and enlarging the current route. Full detail maps are available only when parked.",
+          "rationale": "Detailed maps require extended visual search time that is unsafe while driving."
+        },
+        {
+          "id": "AUT-006-03",
+          "description": "ETA and route information",
+          "requirement": "Estimated time of arrival, remaining distance, and current road name/speed limit must be persistently visible during active navigation without requiring any interaction.",
+          "rationale": "Drivers frequently need route status information and should not have to tap to see it."
+        }
+      ],
+      "tags": ["navigation", "maps", "turn-by-turn", "driving"]
+    },
+    {
+      "id": "AUT-007",
+      "category": "feedback",
+      "title": "Automotive Alerts and Notifications",
+      "description": "Alerts and notifications must be delivered through appropriate channels based on urgency and driving context.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-007-01",
+          "description": "Alert priority levels",
+          "requirement": "Alerts must be categorized into three tiers: Critical (collision, system failure) with visual + audio + haptic delivery; Warning (low fuel, traffic) with visual + audio; Information (message received, weather) with brief visual notification only.",
+          "rationale": "Tiered alerting prevents alert fatigue while ensuring critical alerts are impossible to miss."
+        },
+        {
+          "id": "AUT-007-02",
+          "description": "Alert interruption limits",
+          "requirement": "Non-critical notifications must be queued and batched during active navigation maneuvers. No more than one non-critical notification may be displayed per 30-second interval.",
+          "value": 30,
+          "unit": "seconds",
+          "rationale": "Frequent notifications during critical driving moments increase accident risk."
+        },
+        {
+          "id": "AUT-007-03",
+          "description": "Audio alert standards",
+          "requirement": "Critical audio alerts must be played at a volume that is audible over the current media and road noise. Non-critical alerts must respect the user's notification volume setting. Alert sounds must be distinct and not resemble common environmental sounds.",
+          "rationale": "Inaudible critical alerts or annoying frequent alerts both compromise driver safety."
+        },
+        {
+          "id": "AUT-007-04",
+          "description": "Alert dismissal",
+          "requirement": "Non-critical alerts must auto-dismiss after 5 seconds. Critical alerts must persist until acknowledged by the driver via a single tap or voice command.",
+          "value": 5,
+          "unit": "seconds",
+          "rationale": "Persistent non-critical alerts distract; auto-dismissing critical alerts may be missed."
+        }
+      ],
+      "tags": ["alerts", "notifications", "audio", "haptics", "safety"]
+    },
+    {
+      "id": "AUT-008",
+      "category": "components",
+      "title": "Automotive Component Standards",
+      "description": "UI components for automotive displays must be designed for the unique constraints of the driving environment.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-008-01",
+          "description": "Media player component",
+          "requirement": "The media player must display: current track/station info (max 2 lines), album art (optional), and large play/pause/skip controls. Controls must be operable via touch, steering wheel buttons, and voice.",
+          "rationale": "Media is the most frequently used in-vehicle function and must be instantly controllable."
+        },
+        {
+          "id": "AUT-008-02",
+          "description": "Climate control display",
+          "requirement": "Climate controls must display current temperature, target temperature, fan speed, and air distribution with intuitive visual indicators. Temperature adjustment must be possible in single-tap increments.",
+          "rationale": "Climate control is a frequent driver need that must not require complex interaction."
+        },
+        {
+          "id": "AUT-008-03",
+          "description": "Phone call interface",
+          "requirement": "Incoming call screens must display caller name/number prominently with large accept/reject buttons. During calls, the interface must minimize to a small persistent indicator showing call duration and a prominent end-call button.",
+          "rationale": "Phone interaction while driving must be as brief and simple as possible."
+        },
+        {
+          "id": "AUT-008-04",
+          "description": "Parking camera overlay",
+          "requirement": "Rear/surround camera views must display trajectory guidelines, distance indicators, and obstacle highlighting. Camera views must activate automatically when reverse gear is engaged.",
+          "rationale": "Camera-assisted parking is a safety feature that must provide clear spatial guidance."
+        }
+      ],
+      "tags": ["components", "media", "climate", "phone", "camera"]
+    },
+    {
+      "id": "AUT-009",
+      "category": "accessibility",
+      "title": "Automotive Accessibility",
+      "description": "In-vehicle systems must be accessible to drivers and passengers with various abilities.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-009-01",
+          "description": "Voice interaction accessibility",
+          "requirement": "Voice control must support natural language input (not just exact command phrases), provide voice readback of on-screen content, and allow complete hands-free operation of all non-visual features.",
+          "rationale": "Drivers with motor impairments may rely entirely on voice for vehicle controls."
+        },
+        {
+          "id": "AUT-009-02",
+          "description": "Display adjustability",
+          "requirement": "Display brightness, contrast, text size, and color scheme must be user-adjustable. A high-contrast mode must be available that exceeds standard contrast ratios by at least 50%.",
+          "rationale": "Driver visual capabilities vary widely; adjustable displays serve all users safely."
+        },
+        {
+          "id": "AUT-009-03",
+          "description": "Audio description for visual alerts",
+          "requirement": "All visual alerts and notifications must have an audio equivalent that can be enabled in accessibility settings. Screen reader support must be available for passenger-side infotainment.",
+          "rationale": "Drivers with visual impairments may not see visual-only alerts."
+        }
+      ],
+      "tags": ["accessibility", "voice", "adjustability", "a11y"]
+    },
+    {
+      "id": "AUT-010",
+      "category": "motion",
+      "title": "Automotive Motion and Animation",
+      "description": "Motion and animation in automotive displays must enhance usability without creating distraction.",
+      "severity": "mandatory",
+      "rules": [
+        {
+          "id": "AUT-010-01",
+          "description": "Animation restriction while driving",
+          "requirement": "Non-essential animations (decorative transitions, loading spinners, parallax effects) must be disabled while the vehicle is in motion. Only functional animations (screen transitions, progress indicators) are permitted.",
+          "rationale": "Decorative animations attract driver attention away from the road without functional benefit."
+        },
+        {
+          "id": "AUT-010-02",
+          "description": "Transition speed",
+          "requirement": "Screen transitions must complete within 300ms. If content is loading, the new screen frame must appear immediately with content populating progressively.",
+          "value": 300,
+          "unit": "ms",
+          "rationale": "Slow transitions cause drivers to stare at the display waiting for the result."
+        },
+        {
+          "id": "AUT-010-03",
+          "description": "Map animation smoothness",
+          "requirement": "Map scrolling and zoom animations must run at a minimum of 30fps to prevent motion sickness for passengers and maintain spatial orientation for the driver.",
+          "value": 30,
+          "unit": "fps",
+          "rationale": "Choppy map animations disrupt spatial understanding and can cause passenger discomfort."
+        }
+      ],
+      "tags": ["motion", "animation", "performance", "driving-mode"]
+    }
+  ]
+}
