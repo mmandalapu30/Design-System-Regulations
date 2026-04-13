@@ -206,14 +206,16 @@ A consolidated catalog of every external standard, guideline, and resource refer
 
 ### NHTSA Visual-Manual Driver Distraction Guidelines
 **URL:** https://www.nhtsa.gov/technology-innovation/driver-distraction  
+**Version:** Phase 2, 2013 (DOT HS 812 483)  
 **Domain:** Automotive  
-**Regulations:** AUT-001  
-**Description:** The National Highway Traffic Safety Administration's Phase 1 and Phase 2 guidelines for limiting driver distraction caused by in-vehicle electronic devices. Establishes the foundational rules: maximum 2-second single glance, maximum 12-second total task time, and prohibitions on certain task types while driving.
+**Regulations:** AUT-001, AUT-006, AUT-007, AUT-010  
+**Description:** The National Highway Traffic Safety Administration's Phase 1 (2012) and Phase 2 (2013, DOT HS 812 483) guidelines for limiting driver distraction caused by in-vehicle electronic devices. Establishes the foundational rules: maximum 2-second single glance (Section 4.1.1), maximum 12-second total task time (Section 4.1.2), motion lockout for high visual-manual demand tasks (Section 4.2), and limits on interaction steps (Section 4.3) and list length (Section 4.4).
 
 ---
 
 ### ISO 15005 — Dialogue Management in Transport Systems
 **URL:** https://www.iso.org/standard/55741.html  
+**Version:** ISO 15005:2002  
 **Domain:** Automotive  
 **Regulations:** AUT-004  
 **Description:** International standard specifying ergonomic principles for the design of dialogue management systems in road vehicles. Covers how information is presented and how the driver interacts with in-vehicle systems to minimize cognitive and visual load.
@@ -222,22 +224,34 @@ A consolidated catalog of every external standard, guideline, and resource refer
 
 ### ISO 15008 — Specification for Road Vehicle Displays
 **URL:** https://www.iso.org/standard/62794.html  
+**Version:** ISO 15008:2017  
 **Domain:** Automotive  
-**Regulations:** AUT-002  
+**Regulations:** AUT-002, AUT-003  
 **Description:** International standard specifying requirements for the presentation of information on road vehicle secondary displays. Defines minimum character heights (6.4mm), contrast requirements, image quality criteria, and legibility conditions that underpin the typography regulations.
 
 ---
 
 ### ISO 2575 — Road Vehicles: Symbols for Controls, Indicators and Tell-tales
 **URL:** https://www.iso.org/standard/72798.html  
+**Version:** ISO 2575:2021 (4th edition; supersedes ISO 2575:2010, ISO 2575:2004, ISO 2575:1982)  
 **Domain:** Automotive  
-**Regulations:** AUT-003  
-**Description:** International standard defining standardized symbols (icons) and colors for vehicle controls, warning lights, and indicators. The color conventions (red = critical, amber = warning, green = normal, blue = informational) defined here form the basis for the automotive color semantics regulation.
+**Regulations:** AUT-003, AUT-011  
+**Description:** International standard defining standardized symbols (icons) and colors for vehicle controls, warning lights, and telltale indicators. The color conventions (red = critical, amber = warning, green = normal, blue = informational) defined here form the basis for the automotive color semantics regulation and all telltale symbol requirements.
+
+---
+
+### FMVSS No. 101 — Controls and Displays
+**URL:** https://www.ecfr.gov/current/title-49/part-571/section-571.101  
+**Version:** 49 CFR § 571.101 (as codified 2024; originally issued 1967, substantively amended 1992, 2003, and subsequently)  
+**Domain:** Automotive  
+**Regulations:** AUT-011  
+**Description:** U.S. Federal Motor Vehicle Safety Standard No. 101 specifying required controls, telltales, and indicators for all motor vehicles sold in the United States. Table 1 lists the mandatory telltale set with required activation conditions and permissible indicator colors. Section S5.1 specifies operability requirements; S5.2.1 specifies visibility requirements. The standard was amended in 2003 (68 FR 67966) to require TPMS telltales for model year 2007+ vehicles and references ISO 2575 for symbol conformance.
 
 ---
 
 ### ISO 26262 — Functional Safety for Road Vehicles
 **URL:** https://www.iso.org/standard/68383.html  
+**Version:** ISO 26262:2018 (2nd edition)  
 **Domain:** Automotive  
 **Description:** International standard for functional safety of electrical and electronic systems in road vehicles. Defines Automotive Safety Integrity Levels (ASIL A–D) for safety-critical software. Informs the overall safety posture of automotive HMI design.
 
@@ -293,17 +307,19 @@ A consolidated catalog of every external standard, guideline, and resource refer
 
 | Name | URL | Used in |
 |---|---|---|
-| NHTSA Driver Distraction Guidelines | https://www.nhtsa.gov/technology-innovation/driver-distraction | Domain reference, AUT-001 |
+| NHTSA Driver Distraction Guidelines | https://www.nhtsa.gov/technology-innovation/driver-distraction | Domain reference, AUT-001, AUT-006, AUT-007, AUT-010 |
 | ISO 15005 Dialogue Management | https://www.iso.org/standard/55741.html | Domain reference, AUT-004 |
-| ISO 15008 Road Vehicle Displays | https://www.iso.org/standard/62794.html | Domain reference, AUT-002 |
-| ISO 2575 Vehicle Symbols | https://www.iso.org/standard/72798.html | AUT-003 |
+| ISO 15008 Road Vehicle Displays | https://www.iso.org/standard/62794.html | Domain reference, AUT-002, AUT-003 |
+| ISO 2575 Vehicle Symbols | https://www.iso.org/standard/72798.html | AUT-003, AUT-011 |
 | ISO 26262 Functional Safety | https://www.iso.org/standard/68383.html | Domain reference |
-| Android Automotive OS Guidelines | https://developer.android.com/training/cars | Domain reference, AUT-005 |
+| Android Automotive OS Guidelines | https://developer.android.com/training/cars | Domain reference, AUT-005, AUT-006, AUT-008, AUT-010 |
 | Apple CarPlay HIG | https://developer.apple.com/carplay/documentation/CarPlay-App-Programming-Guide.pdf | Domain reference |
+| FMVSS No. 101 — Controls and Displays | https://www.ecfr.gov/current/title-49/part-571/section-571.101 | Domain reference, AUT-011 |
+| WCAG 2.1 | https://www.w3.org/TR/WCAG21/ | AUT-009 |
 
 ---
 
-## Summary: All Unique Links (35 total)
+## Summary: All Unique Links (37 total)
 
 | # | Name | URL | Domains |
 |---|---|---|---|
@@ -325,7 +341,7 @@ A consolidated catalog of every external standard, guideline, and resource refer
 | 16 | Apple Accessibility Guidelines | https://developer.apple.com/accessibility/ | iOS |
 | 17 | App Store Review Guidelines | https://developer.apple.com/app-store/review/guidelines/ | iOS |
 | 18 | Apple CarPlay HIG | https://developer.apple.com/carplay/documentation/CarPlay-App-Programming-Guide.pdf | Automotive |
-| 19 | WCAG 2.1 | https://www.w3.org/TR/WCAG21/ | Android, iOS, Health |
+| 19 | WCAG 2.1 | https://www.w3.org/TR/WCAG21/ | Android, iOS, Health, Automotive |
 | 20 | Section 508 | https://www.section508.gov/ | Health |
 | 21 | CDC Health Literacy Resources | https://www.cdc.gov/healthliteracy/ | Health |
 | 22 | HIPAA Privacy Rule | https://www.hhs.gov/hipaa/for-professionals/privacy/index.html | Health |
@@ -342,3 +358,5 @@ A consolidated catalog of every external standard, guideline, and resource refer
 | 33 | ISO 26262 Functional Safety | https://www.iso.org/standard/68383.html | Automotive |
 | 34 | Android Automotive OS Design Guidelines | https://developer.android.com/training/cars | Automotive |
 | 35 | Android Navigation Principles | https://developer.android.com/guide/navigation/navigation-principles | Android |
+| 36 | FMVSS No. 101 — Controls and Displays | https://www.ecfr.gov/current/title-49/part-571/section-571.101 | Automotive |
+| 37 | WCAG 2.1 (Automotive) | https://www.w3.org/TR/WCAG21/ | Automotive (AUT-009) |

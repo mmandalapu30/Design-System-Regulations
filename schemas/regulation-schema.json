@@ -41,6 +41,10 @@
           },
           "description": {
             "type": "string"
+          },
+          "version": {
+            "type": "string",
+            "description": "Version or edition of the referenced standard (e.g. 'ISO 15008:2017', '49 CFR § 571.101 as of 2024')."
           }
         }
       }
@@ -126,6 +130,10 @@
               "url": {
                 "type": "string",
                 "format": "uri"
+              },
+              "version": {
+                "type": "string",
+                "description": "Version or edition of the referenced standard."
               }
             }
           }
@@ -159,6 +167,34 @@
         "rationale": {
           "type": "string",
           "description": "Reasoning behind this rule."
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The exact URL of the document, page, or section this rule is sourced from."
+        },
+        "images": {
+          "type": "array",
+          "description": "Visual references (diagrams, illustrations) associated with this rule. Only include verified, publicly accessible image URLs.",
+          "items": {
+            "type": "object",
+            "required": ["url", "alt"],
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "Direct URL to the image."
+              },
+              "alt": {
+                "type": "string",
+                "description": "Accessible alternative text describing the image."
+              },
+              "caption": {
+                "type": "string",
+                "description": "Optional caption or figure reference (e.g. 'Figure 3-1, DOT HS 812 483, p.18')."
+              }
+            }
+          }
         }
       }
     }

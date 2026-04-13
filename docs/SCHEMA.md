@@ -142,6 +142,8 @@ Each item in a regulation's `rules` array defines a specific, testable requireme
 | `value` | any | No | A concrete numeric or string value for the rule (e.g., `14`, `4.5`, `"200-500"`). |
 | `unit` | string | No | The unit of measurement for `value` (e.g., `"sp"`, `"dp"`, `"ms"`, `"ratio"`, `"percent"`). |
 | `rationale` | string | No | The reasoning or evidence behind this rule. Explains *why* it exists. |
+| `source_url` | string (URI) | No | The exact URL of the standard page or document section this rule is sourced from (e.g., `"https://www.ecfr.gov/current/title-49/part-571/section-571.101"`). Only populate with verified, publicly accessible URLs. |
+| `images` | array | No | Visual references (diagrams, illustrations) associated with this rule. Each item requires `url` (URI) and `alt` (string); `caption` is optional (e.g., `"Figure 3-1, DOT HS 812 483, p.18"`). Only populate with verified, directly accessible image URLs — do not use embedded PDF image references. |
 
 ### Rule ID Naming Convention
 
@@ -208,11 +210,14 @@ Rule IDs follow the pattern `[REGULATION-ID]-[NN]` where `NN` is a zero-padded 2
     │   ├── requirement (string)
     │   ├── value       (any)
     │   ├── unit        (string)
-    │   └── rationale   (string)
+    │   ├── rationale   (string)
+    │   ├── source_url  (string URI — exact source page for this rule)
+    │   └── images[]    (array: {url URI, alt string, caption string?})
     ├── tags[]      (array of strings)
     └── references[](array of Reference objects)
         ├── name    (string, required)
-        └── url     (string URI)
+        ├── url     (string URI)
+        └── version (string — edition of the standard, e.g. "ISO 15008:2017")
 ```
 
 ---
@@ -236,7 +241,7 @@ The validator (`scripts/validate.js`) performs two levels of checking:
 PASS: android/design-regulations.json (10 regulations, 35 rules)
 PASS: ios/design-regulations.json (10 regulations, 37 rules)
 PASS: health/design-regulations.json (10 regulations, 38 rules)
-PASS: automotive/design-regulations.json (10 regulations, 39 rules)
+PASS: automotive/design-regulations.json (11 regulations, 44 rules)
 
 Summary: 40 regulations, 149 rules across 4 domains
 All validations passed.
